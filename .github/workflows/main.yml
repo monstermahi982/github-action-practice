@@ -12,3 +12,10 @@ jobs:
     steps:
       - name: Print Hello World
         run: echo "Hello, World!"
+
+  bye-hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print Hello World
+        run: echo 2 + 10
