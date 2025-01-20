@@ -1,4 +1,4 @@
-name: Hello World Workflow
+name: Run Node.js App
 
 on:
   push:
@@ -6,16 +6,20 @@ on:
       - main
 
 jobs:
-  say-hello:
+  run-app:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print Hello World
-        run: echo "Hello, World!"
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-  bye-hello:
-    runs-on: ubuntu-latest
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
-    steps:
-      - name: Print Hello World
-        run: echo 2 + 10
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run the app
+        run: npm start
